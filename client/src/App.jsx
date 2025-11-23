@@ -4,12 +4,12 @@ import { io } from "socket.io-client";
 const socket = io("http://localhost:3001");
 
 function App() {
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState("");// set the setUsername
   const [nameSet, setNameSet] = useState(false); // track if user clicked "Set Name"
-  const [targetUser, setTargetUser] = useState("");
-  const [users, setUsers] = useState([]);
-  const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState([]);
+  const [targetUser, setTargetUser] = useState("");// check the selected user
+  const [users, setUsers] = useState([]);// sets the list of user
+  const [message, setMessage] = useState('')// set the message
+  const [messages, setMessages] = useState([]);// keep in track to the message to provide the history Chat
   const chatEndRef = useRef(null);
 
   // Set username only when button clicked
@@ -83,6 +83,7 @@ function App() {
               placeholder="Your username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && handleSetName()}
               style={{
                 width: "100%",
                 padding: "8px",
@@ -155,7 +156,7 @@ function App() {
                 style={{
                   maxWidth: "60%",
                   padding: "10px 15px",
-                  borderRadius: "20px",
+                  borderRadius: "10px",
                   backgroundColor: msg.self ? "#4CAF50" : "#fff",
                   color: msg.self ? "#fff" : "#000",
                   boxShadow: "0 1px 3px rgba(0,0,0,0.1)",

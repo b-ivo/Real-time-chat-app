@@ -22,6 +22,7 @@ io.on("connection", (socket) => {
 
   // Set username
   socket.on("set_username", (username) => {
+    // sets the user with the unique id
     users[username] = socket.id;
     io.emit("users_list", Object.keys(users)); // send updated list to all clients
   });
